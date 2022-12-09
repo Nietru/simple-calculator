@@ -84,10 +84,11 @@ class Calculator {
         if (this.operation != null) {       /*26 - this is going to make it so that our previous operation/computation is shown in the top/previous display at the end of it.*/
             this.previousOperandTextElement.innerText = 
             `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
-        }
+        
         this.previousOperandTextElement.innerText = this.previousOperand /*13 - makes step 12, the previous operand move to the top previous section of the display. */
     } else {            /*30 - last step, equal to empty so that the previous operand value is gone and it leaves us with just the current operand value.*/
         this.previousOperandTextElement.innerText = ''
+        }
     }
 }
 
