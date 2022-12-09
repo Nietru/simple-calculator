@@ -1,6 +1,6 @@
 /*1 -  we added data-attributes to the different parts of our calculator in the html file so that we can select them in our js file, this file.*/
 /*3 - create a calculator class, add a constructor which will take our previous and current text elements and display them. */
-class calculator {
+class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement
         this.currentOperandTextElement = currentOperandTextElement
@@ -33,7 +33,29 @@ class calculator {
     }
 
     compute() {
-
+        let computation     /*17 - create a variable with let. this will be the result of our compute function.*/
+        const prev = parseFloat(this.previousOperand)   /*18 create two more variables, that will be the number of our previous and current operees, this converts a string to a number.*/
+        const current = parseFloat(this.currentOperand)
+        if (isNaN(prev) || isNaN(current)) return   /*19 - NaN stands for not a number, return represents cancelling. so this means if there is no number, cancel.*/
+        switch (this.operation) {   /*20 - make the math happen.*/
+            case '+':
+                computation = prev + current
+                break
+            case '-':
+                computation = prev - current
+                break
+            case '*':
+                computation = prev * current
+                    break
+            case '÷':       /*copy the division symbol straight from the html file.*/
+                computation = prev / current
+                    break
+            default:    /*21 - default acts like an 'else' statement. so if none of the 4 cases are true, whatever is in the default is what gets executed.*/
+                return
+        }
+        this.currentOperand = computation /*22 - outside of the switch statement, now inside of our calculator we are able to perform calculations.*/
+        this.operation = undefined
+        this.previousOperand = ''
     }
 
     updateDisplay() {
@@ -53,7 +75,7 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 
 /*5 - creating a calculator. here we are hooking up all of our different variables and making them operate on our calculator object.*/
     /*here we are going to make a new calculator, which is how you define classes. then we pass everything from our constructor into it.*/
-const calculator = new calculator(previousOperandTextElement, currentOperandTextElement)
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
 /*6 - add all of our number buttons and an eventListener; this states that everytime the user 'clicks' a button we want it to do something.*/
 numberButtons.forEach(button => {
@@ -68,4 +90,9 @@ operationButtons.forEach(button => {
         calculator.chooseOperation(button.innerText)    /*instead of append a number, we want to choose an operation.*/
         calculator.updateDisplay()
     })
+})
+/*16 - compute function.*/
+equalsButton.addEventListener('click', button => {
+    calculator.compute()
+    calculator.updateDisplay()
 })
