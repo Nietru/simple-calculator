@@ -13,7 +13,8 @@ class Calculator {
         this.operation = undefined   /*undefined since they wont have any operations selected if the user cleared everything.*/
     }
 
-    delete() {
+    delete() {  /*24 - the slice method will shop off the last input typed, starting with the first entry: 0 and ending with the last entry: -1.*/
+        this.currentOperand = this.chooseOperand.toString().slice(0, -1)
 
     }
     /*appendNumber essentially is what happens everytime a user clicks on a number and it adds it to the screen.*/
@@ -58,9 +59,35 @@ class Calculator {
         this.previousOperand = ''
     }
 
-    updateDisplay() {
-        this.currentOperandTextElement.innerText = this.currentOperand /*7 */
+    /*27 - "helper function", makes it so that we get commas in our numbers in the display, where they're supposed to be, i.e. 100,000.*/
+    getDisplayNumber(number) {  /*29 - the rest of this helper function is super complicated and to watch the tutorial for an explaination, refer to the credits in the README file.*/
+        const stringNumber = number.toString()
+        const integerDigits = parseFloat(stringNumber.split('.')[0])
+        const decimalDigits = stringNumber.split('.')[1]
+        let integerDisplay
+        if(isNaN(integerDigits)) {
+            integerDisplay = ''
+        } else {
+            integerDisplay = integerDigits.toLocaleString('en', {
+                maximumFractionDigits: 0 })
+        }
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`
+        } else {
+            return integerDisplay
+        }
+    }
+
+    updateDisplay() {       /*28 - added the getDisplayNumber parts to the updateDisplay() function. so that getDisplayNumber will be reflected in the previous and the current values.*/
+        this.currentOperandTextElement.innerText = 
+        this.getDisplayNumber(this.currentOperand) /*7 - was just this.currentOperand. step 28 adds the getDisplayNumber part later on.*/
+        if (this.operation != null) {       /*26 - this is going to make it so that our previous operation/computation is shown in the top/previous display at the end of it.*/
+            this.previousOperandTextElement.innerText = 
+            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        }
         this.previousOperandTextElement.innerText = this.previousOperand /*13 - makes step 12, the previous operand move to the top previous section of the display. */
+    } else {            /*30 - last step, equal to empty so that the previous operand value is gone and it leaves us with just the current operand value.*/
+        this.previousOperandTextElement.innerText = ''
     }
 }
 
@@ -91,8 +118,18 @@ operationButtons.forEach(button => {
         calculator.updateDisplay()
     })
 })
-/*16 - compute function.*/
+/*16 - make the compute function work.*/
 equalsButton.addEventListener('click', button => {
     calculator.compute()
+    calculator.updateDisplay()
+})
+/*23 - make the clear function work.*/
+allClearButton.addEventListener('click', button => {
+    calculator.clear()
+    calculator.updateDisplay()
+})
+/*25 - make the delete function work.*/
+deleteButton.addEventListener('click', button => {
+    calculator.delete()
     calculator.updateDisplay()
 })
