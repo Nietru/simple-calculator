@@ -14,7 +14,7 @@ class Calculator {
     }
 
     delete() {  /*24 - the slice method will shop off the last input typed, starting with the first entry: 0 and ending with the last entry: -1.*/
-        this.currentOperand = this.chooseOperand.toString().slice(0, -1)
+        this.currentOperand = this.currentOperand.toString().slice(0, -1)
 
     }
     /*appendNumber essentially is what happens everytime a user clicks on a number and it adds it to the screen.*/
@@ -65,7 +65,7 @@ class Calculator {
         const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
         let integerDisplay
-        if(isNaN(integerDigits)) {
+        if (isNaN(integerDigits)) {
             integerDisplay = ''
         } else {
             integerDisplay = integerDigits.toLocaleString('en', {
@@ -83,11 +83,10 @@ class Calculator {
         this.getDisplayNumber(this.currentOperand) /*7 - was just this.currentOperand. step 28 adds the getDisplayNumber part later on.*/
         if (this.operation != null) {       /*26 - this is going to make it so that our previous operation/computation is shown in the top/previous display at the end of it.*/
             this.previousOperandTextElement.innerText = 
-            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
-        
-        this.previousOperandTextElement.innerText = this.previousOperand /*13 - makes step 12, the previous operand move to the top previous section of the display. */
+            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}` 
+        /*this.previousOperandTextElement.innerText = this.previousOperand*/ /*13 - makes step 12, the previous operand move to the top previous section of the display. */
     } else {            /*30 - last step, equal to empty so that the previous operand value is gone and it leaves us with just the current operand value.*/
-        this.previousOperandTextElement.innerText = ''
+        this.previousOperandTextElement.innerText = '' /*28ish - this is moved from line 87 and comment that line out*/
         }
     }
 }
