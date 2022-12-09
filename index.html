@@ -15,31 +15,32 @@
         <!--that way we know this is our output screen-->
         <div class="output">
             <!--this is called previous because it will be what was previously typed and appear in top right corner.-->
-            <div class="previous-operand"></div>
+                <!--adding data attributes instead of class attributes to all of the components for our script.js file (done after css file)-->
+            <div data-previous-operand class="previous-operand"></div>
             <!--this is what is currently typed onto the output screen.-->
-            <div class="current-operand"></div>
+            <div data-current-operand class="current-operand"></div>
         </div>
         <!--now we need to create all of our calculator buttons. We will give this button its own class because it will be twice as large as the other buttons.-->
-        <button class="span-two">AC</button>
-        <button>DEL</button>
+        <button data-all-clear class="span-two">AC</button>
+        <button data-delete>DEL</button>
         <!--you can google copy the symbols you need like division sign.-->
-        <button>÷</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>*</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>+</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>-</button>
-        <button>.</button>
-        <button>0</button>
+        <button data-operation>÷</button>
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-operation>*</button>
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-operation>+</button>
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button data-operation>-</button>
+        <button data-number>.</button>
+        <button data-number>0</button>
         <!--the = button will also get the span-two tag because it is also twice the size of the other buttons.-->
-        <button class="span-two">=</button>
+        <button data-equals class="span-two">=</button>
     </div>
 </body>
 
