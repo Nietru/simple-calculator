@@ -5,13 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Calculator</title>
     <script src="script.js" defer></script>
 </head>
 
 <body>
-
+    <div class="calculator-grid">
+        <!--that way we know this is our output screen-->
+        <div class="output">
+            <!--this is called previous because it will be what was previously typed and appear in top right corner.-->
+            <div class="previous-operand"></div>
+            <!--this is what is currently typed onto the output screen.-->
+            <div class="current-operand"></div>
+        </div>
+        <!--now we need to create all of our calculator buttons. We will give this button its own class because it will be twice as large as the other buttons.-->
+        <button class="span-two">AC</button>
+        <button>DEL</button>
+        <!--you can google copy the symbols you need like division sign.-->
+        <button>÷</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>*</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>+</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>-</button>
+        <button>.</button>
+        <button>0</button>
+        <!--the = button will also get the span-two tag because it is also twice the size of the other buttons.-->
+        <button class="span-two">=</button>
+    </div>
 </body>
 
 </html>
