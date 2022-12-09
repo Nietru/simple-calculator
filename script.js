@@ -1,5 +1,37 @@
 /*first we added data-attributes to the different parts of our calculator in the html file so that we can select them in our js file, this file.*/
 
+class calculator {
+    constructor(previousOperandTextElement, currentOperandTextElement) {
+        this.previousOperandTextElement = previousOperandTextElement
+        this.currentOperandTextElement = currentOperandTextElement
+    }
+
+    clear() {
+        this.currentOperand = ''
+        this.previousOperand = ''
+        this.operation = undefined
+    }
+
+    delete() {
+
+    }
+
+    appendNumber(number) {
+
+    }
+
+    chooseOperation(operation) {
+
+    }
+
+    compute() {
+
+    }
+
+    updateDisplay() {
+
+    }
+}
 
 /*now we will start by making some constant variables that will be all of our buttons.*/
 const numberButtons = document.querySelectorAll('[data-number]')
