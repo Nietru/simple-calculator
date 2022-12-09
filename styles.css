@@ -1,0 +1,74 @@
+/*border-box so that way it is easier to size our elements.*/
+*, *::before, *::after {
+    box-sizing:border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+
+}
+/*we will call the body tag so that we can fill in the entire background of our webpage. we will remove all padding and margin so that it fills the entire screen.*/
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, rgb(90, 43, 90));
+}
+/*the next thing we want to do is style the grid, or the calculator body.*/
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+/*align-content instead of align-items will fix the spacing between our buttons.*/
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+/*the max in the minmax value defines how tall we want the boxes to be, and the max we set to auto so that we can type as much as we want into the calculator and it will show everything.
+the 5 is the number of rows we have, and the 100px is so that they are all exactly square and also the same size.*/
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+/*this will select all of our buttons.*/
+.calculator-grid > button {
+    cursor: crosshair;
+    font-size: 2rem;
+    border: 1px solid white;
+/*we want to remove the outline. these are something the browser puts in by default.*/
+    outline: none;
+/*the .75 makes the button background color slightly opaque.*/
+    background-color: rgba(255, 255, 255, .75);
+}
+/*next we will change the color of the buttons while hovering over them.*/
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .9);
+}
+/*makes the AC and = bottons twice the size of the other buttons*/
+.span-two {
+    grid-column: span 2;
+}
+/*add some dummy text in the html file in the output areas so you can see the changes take effect.*/
+.output {
+/*the one starts at the first column, and -1 is essentially just the last column. This will make it fill the entire width of our top row*/
+    grid-column: 1 / -1;
+/*black background for the screen part of the calculator, with 75% transparency.*/
+    background-color: rgba(0, 0, 0, .75);
+/*flex will allow us to align the typed input inside of the black output area of the calculator.*/
+    display: flex;
+/*flex-end will make our number display aligned on the right of the output box area like a real calculator.*/
+    align-items: flex-end;
+/*this will put as much space between our elements as possible.*/
+    justify-content: space-around;
+/*flex-direction: column; will make our output line up vertically instead of side by side, which is what we want.*/
+    flex-direction: column;
+/*padding so the numbers arent squished all the way to the edges of our ouput box.*/
+    padding: 10px;
+/*so that if the numbers the user inputs gets too long for the screen, it can break at that point and wrap around to the next line.*/
+    word-wrap: break-word;
+    word-break: break-all;
+}
+/*we want the previous input to be differentiated from the current input*/
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+.output .current-operand {
+    color: rgb(145, 4, 4);
+    font-size: 2.5rem;
+}
+
+
